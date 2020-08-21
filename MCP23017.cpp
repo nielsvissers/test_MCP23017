@@ -39,9 +39,9 @@ int main()
 	}
 	else
 	{
-        unsigned char* uc;
-        std::string s( reinterpret_cast<char const*>(uc), length ) ;
-		printf("Data read: %s\n", s);
-		printf("length: %d\n", length);
+for (i=0;i<16;i++)
+{
+    printf("%.2x",buffer[i]);
+}
 	}
 }
