@@ -75,10 +75,10 @@ int main()
 
     init(file_i2c);
 	printf("file_i2c: %d",file_i2c);
-	/*while(true)
+	while(true)
     {
 	//----- READ BYTES -----
-	length = 4;			//<<< Number of bytes to read
+	length = 1;			//<<< Number of bytes to read
 	if (read(file_i2c, buffer, length) != length)		//read() returns the number of bytes actually read, if it doesn't match then an error occurred (e.g. no response from the device)
 	{
 		//ERROR HANDLING: i2c transaction failed
@@ -87,13 +87,13 @@ int main()
 	else
 	{
         int i;
-for (i=0;i<4;i++)
+for (i=0;i<1;i++)
 {
     printf("%.2x",buffer[i]);
 }
 printf("\n");
 	}
-}*/
+}
 }
 void writeRegister(int file_i2c,int regAddress, int value)
 {
@@ -101,7 +101,7 @@ void writeRegister(int file_i2c,int regAddress, int value)
 	unsigned char buffer[2] = {0};
 	buffer[0] = regAddress;
 	buffer[1] = value;
-	int length = 4;			//<<< Number of bytes to write
+	int length = 1;			//<<< Number of bytes to write
 	if (write(file_i2c, buffer, length) != length)		//write() returns the number of bytes actually written, if it doesn't match then an error occurred (e.g. no response from the device)
 	{
 		/* ERROR HANDLING: i2c transaction failed */
