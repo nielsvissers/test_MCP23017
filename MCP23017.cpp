@@ -39,6 +39,6 @@ int main()
 	}
 	else
 	{
-		printf("Data read: %s\n", buffer);
+		printf("Data read: %s\n", buffer[0]);
 	}
 }
