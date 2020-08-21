@@ -97,7 +97,7 @@ void writeRegister(int file_i2c,int regAddress, int value)
 	//----- WRITE BYTES -----
 	buffer[0] = regAddress;
 	buffer[1] = value;
-	length = 2;			//<<< Number of bytes to write
+	int length = 4;			//<<< Number of bytes to write
 	if (write(file_i2c, buffer, length) != length)		//write() returns the number of bytes actually written, if it doesn't match then an error occurred (e.g. no response from the device)
 	{
 		/* ERROR HANDLING: i2c transaction failed */
