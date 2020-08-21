@@ -95,6 +95,7 @@ printf("\n");
 void writeRegister(int file_i2c,int regAddress, int value)
 {
 	//----- WRITE BYTES -----
+	unsigned char buffer[60] = {0};
 	buffer[0] = regAddress;
 	buffer[1] = value;
 	int length = 4;			//<<< Number of bytes to write
