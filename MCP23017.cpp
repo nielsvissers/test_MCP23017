@@ -79,6 +79,7 @@ int main()
     {
 	//----- READ BYTES -----
 	length = 1;			//<<< Number of bytes to read
+    buffer[0]=0x13;
 	if (read(file_i2c, buffer, length) != length)		//read() returns the number of bytes actually read, if it doesn't match then an error occurred (e.g. no response from the device)
 	{
 		//ERROR HANDLING: i2c transaction failed
