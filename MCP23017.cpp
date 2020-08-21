@@ -43,8 +43,9 @@ int main()
         int i;
 for (i=0;i<60;i++)
 {
-    printf("%.2x\n",buffer[i]);
+    printf("%.2x",buffer[i]);
 }
+printf("\n");
 	}
 }
 }
