@@ -75,7 +75,7 @@ int main()
 
     init(file_i2c);
 	printf("file_i2c: %d",file_i2c);
-	while(true)
+	/*while(true)
     {
 	//----- READ BYTES -----
 	length = 4;			//<<< Number of bytes to read
@@ -93,7 +93,7 @@ for (i=0;i<4;i++)
 }
 printf("\n");
 	}
-}
+}*/
 }
 void writeRegister(int file_i2c,int regAddress, int value)
 {
