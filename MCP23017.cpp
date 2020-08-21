@@ -29,7 +29,8 @@ int main()
 		return -1;
 	}
 	
-	
+	while(true)
+    {
 	//----- READ BYTES -----
 	length = 4;			//<<< Number of bytes to read
 	if (read(file_i2c, buffer, length) != length)		//read() returns the number of bytes actually read, if it doesn't match then an error occurred (e.g. no response from the device)
@@ -45,4 +46,5 @@ for (i=0;i<60;i++)
     printf("%.2x",buffer[i]);
 }
 	}
+}
 }
