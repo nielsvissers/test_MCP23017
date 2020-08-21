@@ -4,6 +4,7 @@
 #include <linux/i2c-dev.h>		//Needed for I2C port
 #include <stdio.h>
 #include <string>
+#include "MCP23017.h"
 
 int main()
 {
