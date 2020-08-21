@@ -18,7 +18,7 @@ int main()
 	{
 		//ERROR HANDLING: you can check errno to see what went wrong
 		printf("Failed to open the i2c bus");
-		return;
+		return -1;
 	}
 	
 	int addr = 0x20;          //<<<<<The I2C address of the slave
@@ -26,7 +26,7 @@ int main()
 	{
 		printf("Failed to acquire bus access and/or talk to slave.\n");
 		//ERROR HANDLING; you can check errno to see what went wrong
-		return;
+		return -1;
 	}
 	
 	
