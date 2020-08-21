@@ -4,7 +4,7 @@
 #include <linux/i2c-dev.h>		//Needed for I2C port
 
 
-void main()
+int main()
 {
 	int file_i2c;
 	int length;
