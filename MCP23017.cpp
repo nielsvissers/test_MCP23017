@@ -92,7 +92,7 @@ printf("\n");
 	}
 }
 }
-void writeRegister(int regAddress, int value)
+void writeRegister(int file_i2c,int regAddress, int value)
 {
 	//----- WRITE BYTES -----
 	buffer[0] = regAddress;
