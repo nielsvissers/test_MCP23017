@@ -93,6 +93,8 @@ for (i=0;i<1;i++)
 }
 printf("\n");
 	}
+    
+        usleep(2000 * 1000);
 }
 }
 void writeRegister(int file_i2c,int regAddress, int value)
