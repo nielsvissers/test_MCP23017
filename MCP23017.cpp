@@ -39,6 +39,7 @@ int main()
 	}
 	else
 	{
+        int i;
 for (i=0;i<16;i++)
 {
     printf("%.2x",buffer[i]);
