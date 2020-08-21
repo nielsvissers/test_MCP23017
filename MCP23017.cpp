@@ -74,7 +74,7 @@ int main()
 	}
 
     init(file_i2c);
-	printf("file_i2c: %n",file_i2c);
+	printf("file_i2c: %d",file_i2c);
 	while(true)
     {
 	//----- READ BYTES -----
