@@ -3,6 +3,9 @@
 #include <sys/ioctl.h>			//Needed for I2C port
 #include <linux/i2c-dev.h>		//Needed for I2C port
 
+
+void main()
+{
 	int file_i2c;
 	int length;
 	unsigned char buffer[60] = {0};
@@ -37,3 +40,4 @@
 	{
 		printf("Data read: %s\n", buffer);
 	}
+}
