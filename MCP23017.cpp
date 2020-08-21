@@ -111,11 +111,11 @@ void writeRegister(int file_i2c,int regAddress, int value)
 void init(int file_i2c)
 {
     //set bank A as input
-    writeRegister(file_i2c, MCP23017_IODIRA, INPUT);
+    writeRegister(file_i2c, MCP23017_IODIRA, 0xff);
     //set bank B as input
-    writeRegister(file_i2c, MCP23017_IODIRB, INPUT);
+    writeRegister(file_i2c, MCP23017_IODIRB, 0xff);
     //set pullup bank A
-    writeRegister(file_i2c, MCP23017_GPPUA, HIGH);
+    writeRegister(file_i2c, MCP23017_GPPUA, 0xff);
     //set pullup bank B
-    writeRegister(file_i2c, MCP23017_GPPUB, HIGH);
+    writeRegister(file_i2c, MCP23017_GPPUB, 0xff);
 }
