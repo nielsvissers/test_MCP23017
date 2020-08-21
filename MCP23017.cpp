@@ -42,6 +42,6 @@ int main()
         unsigned char* uc;
         std::string s( reinterpret_cast<char const*>(uc), length ) ;
 		printf("Data read: %s\n", s);
-		printf("length: %s\n", length);
+		printf("length: %d\n", length);
 	}
 }
