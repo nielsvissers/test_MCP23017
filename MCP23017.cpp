@@ -46,6 +46,9 @@
 #define FALLING 1
 #define RISING 2
 
+void writeRegister(int ,int , int );
+void init(int );
+
 int main()
 {
 	int file_i2c;
@@ -92,7 +95,7 @@ printf("\n");
 	}
 }
 }
-int writeRegister(int file_i2c,int regAddress, int value)
+void writeRegister(int file_i2c,int regAddress, int value)
 {
 	//----- WRITE BYTES -----
 	unsigned char buffer[60] = {0};
@@ -105,7 +108,7 @@ int writeRegister(int file_i2c,int regAddress, int value)
 		printf("Failed to write to the i2c bus.\n");
 	}
 }
-int init(int file_i2c)
+void init(int file_i2c)
 {
     //set bank A as input
     writeRegister(file_i2c, MCP23017_IODIRA, INPUT);
