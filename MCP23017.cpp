@@ -39,6 +39,8 @@ int main()
 	}
 	else
 	{
-		printf("Data read: %s\n", buffer[0]);
+        std::string s(buffer);
+		printf("Data read: %s\n", s);
+		printf("length: %s\n", length);
 	}
 }
