@@ -78,7 +78,7 @@ int main()
 	while(true)
     {
 	//----- READ BYTES -----
-	length = 2;			//<<< Number of bytes to read
+	length = 4;			//<<< Number of bytes to read
 	if (read(file_i2c, buffer, length) != length)		//read() returns the number of bytes actually read, if it doesn't match then an error occurred (e.g. no response from the device)
 	{
 		//ERROR HANDLING: i2c transaction failed
@@ -87,7 +87,7 @@ int main()
 	else
 	{
         int i;
-for (i=0;i<2;i++)
+for (i=0;i<4;i++)
 {
     printf("%.2x",buffer[i]);
 }
