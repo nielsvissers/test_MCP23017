@@ -68,8 +68,11 @@ void setdir_mcp23017(mcp23017 expander, int richtungsregister, int value)
   if(richtungsregister == IODIRA)
     {
     /* Datenrichtung schreiben */
+    
+  printf("set bank A (richting) \n");
     write_mcp23017(expander, IODIRA, value);
     /* Pull-Up-Widerstaende einschalten Port A */
+  printf("set bank A (pullup) \n");
     write_mcp23017(expander, GPPUA, value);
     /* Logik umkehren */
    // write_mcp23017(expander, IPOLA, value);
