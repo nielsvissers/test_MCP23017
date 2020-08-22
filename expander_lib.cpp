@@ -32,7 +32,7 @@ int main()
     int returnvalue=read_mcp23017(expander,0x13);
     printf("%",returnvalue);
     usleep(1000000); /* 100 ms Pause */
-    
+    }
 
   return 0;
 }
