@@ -19,6 +19,35 @@
  * directionA/B: Richtungen der Ports
  * I2CBus: Pfad zum I2CBus ("/dev/i2c-1" für Bus 1)
  */
+int main()
+{
+  mcp23017 expander;  /* Verwaltungs-Structure */
+  int data = 0x01;    /* Ausgabewert */
+  int down = 0;       /* Richtungsangabe */
+
+  expander = init_mcp23017(0x20,0,255,"/dev/i2c-1");
+
+  while(1)
+    {
+    /* beide Ports identisch "bedienen" */
+    write_mcp23017(expander,GPIOA,data);
+    write_mcp23017(expander,GPIOB,data);
+
+    if (data == 0x80) /* ganz links - umdrehen */
+      down = 1;
+    if (data == 0x01) /* ganz rechts - umdrehen */
+      down = 0;
+
+    if (down)
+       data = data >> 1;
+    else
+       data = data << 1;
+    usleep(100000); /* 100 ms Pause */
+    }
+
+  return 0;
+}
+
 mcp23017 init_mcp23017(int address, int directionA, int directionB, char* I2CBus)
   {
   int fd;             /* Filehandle */
