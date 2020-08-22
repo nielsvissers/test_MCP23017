@@ -30,7 +30,7 @@ int main()
     {
     /* beide Ports identisch "bedienen" */
     int returnvalue=read_mcp23017(expander,0x13);
-    printf("return value: %\n",returnvalue);
+    printf("return value: 0x%x\n",returnvalue);
     usleep(100000); /* 100 ms Pause */
     }
 
@@ -151,7 +151,7 @@ int read_mcp23017(mcp23017 expander, int reg)
    else
      {
      close(fd);
-     printf("read %\n",value);
+     printf("read %d\n",value);
      return value;
      }
   }
