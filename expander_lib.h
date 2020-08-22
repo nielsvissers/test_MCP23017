@@ -44,7 +44,7 @@ typedef struct expander mcp23017;
  * directionA/B: Richtungen der Ports
  * I2CBus: Pfad zum I2CBus ("/dev/i2c-1" für Bus 1)
  */
-mcp23017 init_mcp23017(int address, int directionA, int directionB, char* I2CBus);
+mcp23017 init_mcp23017(int address, int directionA, int directionB);
 
 /* Datenrichtung der Ports festlegen
  * richtungsregister: muss "IODIRA" oder "IODIRB" sein!
