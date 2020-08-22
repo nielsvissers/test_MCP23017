@@ -34,7 +34,7 @@ int main()
     fd = open_mcp23017(expander);
     
 	unsigned char buf[2] = {0};
-    int returnvalue=read_register(fd,0x13, buf, 2);
+    int returnvalue=read_mcp23017(expander, 0x13);//read_register(fd,0x13, buf, 2);
     printf("return value: %02x\n",returnvalue);
     usleep(100000); /* 100 ms Pause */
     }
