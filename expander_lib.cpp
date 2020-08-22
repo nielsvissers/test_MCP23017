@@ -31,7 +31,7 @@ int main()
     /* beide Ports identisch "bedienen" */
     
     int fd;
-    fd = open_mcp23017(fd, 0x13, );
+    fd = open_mcp23017(expander);
     
 	unsigned char buf[1] = {0};
     int returnvalue=read_register(expander,0x13, buf, 1);
@@ -41,7 +41,7 @@ int main()
 
   return 0;
 }
-static int read_register(int busfd, __uint16_t reg, unsigned char *buf, int bufsize)
+int read_register(int busfd, __uint16_t reg, unsigned char *buf, int bufsize)
 {
 	unsigned char reg_buf[2];
 	int ret;
@@ -50,7 +50,7 @@ static int read_register(int busfd, __uint16_t reg, unsigned char *buf, int bufs
 	reg_buf[0] = (reg >> 0) & 0xFF;
 	reg_buf[1] = (reg >> 8) & 0xFF;
 
-	ret = write_bus(busfd, reg_buf, 2);
+	ret = write(busfd, reg_buf, 2);
 	if (ret < 0) {
 		printf("Failed to write [0x%02x 0x%02x] (reg: %04x).\n", reg_buf[0], reg_buf[1], reg);
 		return ret;
