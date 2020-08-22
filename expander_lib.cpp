@@ -24,7 +24,7 @@ int main()
   mcp23017 expander;  /* Verwaltungs-Structure */
   int data = 0x01;    /* Ausgabewert */
   int down = 0;       /* Richtungsangabe */
-  expander = init_mcp23017(0x20,255,255);
+  expander = init_mcp23017(0x20,0xFF,0xFF);
 
   while(1)
     {
@@ -70,7 +70,7 @@ void setdir_mcp23017(mcp23017 expander, int richtungsregister, int value)
     /* Pull-Up-Widerstaende einschalten Port A */
     write_mcp23017(expander, GPPUA, value);
     /* Logik umkehren */
-    write_mcp23017(expander, IPOLA, value);
+   // write_mcp23017(expander, IPOLA, value);
     }
   else if(richtungsregister == IODIRB)
     {
@@ -79,7 +79,7 @@ void setdir_mcp23017(mcp23017 expander, int richtungsregister, int value)
     /* Pull-Up-Widerstaende einschalten Port B */
     write_mcp23017(expander, GPPUB, value);
     /*Logik umkehren */
-    write_mcp23017(expander, IPOLB, value);
+   // write_mcp23017(expander, IPOLB, value);
     }
   else
     {
