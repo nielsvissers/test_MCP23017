@@ -98,7 +98,7 @@ void setdir_mcp23017(mcp23017 expander, int richtungsregister, int value)
   printf("set bank A (pullup) \n");
     write_mcp23017(expander, GPPUA, value);
     /* Logik umkehren */
-   // write_mcp23017(expander, IPOLA, value);
+    write_mcp23017(expander, IPOLA, value);
     }
   else if(richtungsregister == IODIRB)
     {
@@ -107,7 +107,7 @@ void setdir_mcp23017(mcp23017 expander, int richtungsregister, int value)
     /* Pull-Up-Widerstaende einschalten Port B */
     write_mcp23017(expander, GPPUB, value);
     /*Logik umkehren */
-   // write_mcp23017(expander, IPOLB, value);
+    write_mcp23017(expander, IPOLB, value);
     }
   else
     {
@@ -165,12 +165,7 @@ int read_mcp23017(mcp23017 expander, int reg)
    {
    int value,fd;
    fd = open_mcp23017(expander);
-   unsigned char buffer[2]={0};
-   
-  unsigned char writebuffer[1]={0};
-  writebuffer[0]=0x13;
-   write(fd, writebuffer, 1);
-   if((value = read(fd, buffer ,1)) < 0)
+   if((value = i2c_smbus_read_byte_data(fd, reg)) < 0)
      {
      printf("Failed to read from the i2c bus\n");
      close(fd);
@@ -180,8 +175,7 @@ int read_mcp23017(mcp23017 expander, int reg)
    else
      {
      close(fd);
-     printf("value %d\n",value);
-     printf("buffer %s\n",buffer);
      return value;
      }
+  }
   }
