@@ -1,9 +1,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-extern "C"{
 #include <linux/i2c-dev.h>
-}
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -101,7 +99,10 @@ void write_mcp23017(mcp23017 expander, int reg, int value)
   {
   int fd;
   fd = open_mcp23017(expander);
-  if(write(fd,reg,value,1) < 0)
+  unsigned char buffer[2]={0};
+  buffer[0]=reg;
+  buffer[1]=value;
+  if(write(fd,buffer, 2) < 0)
     {
     printf("Failed to write to the i2c bus\n");
     exit(1);
@@ -117,7 +118,9 @@ int read_mcp23017(mcp23017 expander, int reg)
    {
    int value,fd;
    fd = open_mcp23017(expander);
-   if((value = read(fd, reg,1)) < 0)
+   unsigned char buffer[2]={0},
+   write(0x13);
+   if((value = read(fd, buffer ,1)) < 0)
      {
      printf("Failed to read from the i2c bus\n");
      close(fd);
