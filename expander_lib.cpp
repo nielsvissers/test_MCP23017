@@ -120,7 +120,7 @@ void write_mcp23017(mcp23017 expander, int reg, int value)
   unsigned char buffer[2]={0};
   buffer[0]=reg;
   buffer[1]=value;
-  if(write(fd,buffer, 2) < 0)
+  if(write(fd,buffer, 1) < 0)
     {
     printf("Failed to write to the i2c bus\n");
     exit(1);
