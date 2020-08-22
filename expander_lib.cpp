@@ -139,8 +139,8 @@ int read_mcp23017(mcp23017 expander, int reg)
    unsigned char buffer[2]={0};
    
   unsigned char writebuffer[1]={0};
-  buffer[0]=0x13;
-   write(fd, buffer, 1);
+  writebuffer[0]=0x13;
+   write(fd, writebuffer, 1);
    if((value = read(fd, buffer ,1)) < 0)
      {
      printf("Failed to read from the i2c bus\n");
