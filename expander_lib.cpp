@@ -157,7 +157,8 @@ int read_mcp23017(mcp23017 expander, int reg)
    else
      {
      close(fd);
-     printf("read %d\n",value);
+     printf("value %d\n",value);
+     printf("buffer %s\n",buffer);
      return value;
      }
   }
