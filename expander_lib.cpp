@@ -101,7 +101,7 @@ void write_mcp23017(mcp23017 expander, int reg, int value)
   {
   int fd;
   fd = open_mcp23017(expander);
-  if(i2c_smbus_write_byte_data(fd,reg,value) < 0)
+  if(write(fd,reg,value,1) < 0)
     {
     printf("Failed to write to the i2c bus\n");
     exit(1);
@@ -117,7 +117,7 @@ int read_mcp23017(mcp23017 expander, int reg)
    {
    int value,fd;
    fd = open_mcp23017(expander);
-   if((value = i2c_smbus_read_byte_data(fd, reg)) < 0)
+   if((value = read(fd, reg,1)) < 0)
      {
      printf("Failed to read from the i2c bus\n");
      close(fd);
