@@ -24,7 +24,7 @@ int main()
   mcp23017 expander;  /* Verwaltungs-Structure */
   int data = 0x01;    /* Ausgabewert */
   int down = 0;       /* Richtungsangabe */
-  expander = init_mcp23017(0x20,0,255);
+  expander = init_mcp23017(0x20,255,255);
 
   while(1)
     {
