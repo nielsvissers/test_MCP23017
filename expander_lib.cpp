@@ -29,20 +29,10 @@ int main()
   while(1)
     {
     /* beide Ports identisch "bedienen" */
-    write_mcp23017(expander,GPIOA,data);
-    write_mcp23017(expander,GPIOB,data);
-
-    if (data == 0x80) /* ganz links - umdrehen */
-      down = 1;
-    if (data == 0x01) /* ganz rechts - umdrehen */
-      down = 0;
-
-    if (down)
-       data = data >> 1;
-    else
-       data = data << 1;
-    usleep(100000); /* 100 ms Pause */
-    }
+    int returnvalue=read_mcp23017(expander,0x13);
+    printf("%",returnvalue);
+    usleep(1000000); /* 100 ms Pause */
+    
 
   return 0;
 }
