@@ -34,7 +34,7 @@ struct expander
   int address;      /* I2C-Bus-Adresse des Bausteines      */
   int directionA;   /* Datenrichtung Port A                */
   int directionB;   /* Datenrichtung Port B                */
-  std::string I2CBus;     /* I2C-Device ("/dev/i2c-1" für Bus 1) */
+  /*char* I2CBus;     /* I2C-Device ("/dev/i2c-1" für Bus 1) */
   };
 /* Expander-Datentyp */
 typedef struct expander mcp23017;
@@ -44,7 +44,7 @@ typedef struct expander mcp23017;
  * directionA/B: Richtungen der Ports
  * I2CBus: Pfad zum I2CBus ("/dev/i2c-1" für Bus 1)
  */
-mcp23017 init_mcp23017(int address, int directionA, int directionB, std::string I2CBus);
+mcp23017 init_mcp23017(int address, int directionA, int directionB, char* I2CBus);
 
 /* Datenrichtung der Ports festlegen
  * richtungsregister: muss "IODIRA" oder "IODIRB" sein!

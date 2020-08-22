@@ -6,7 +6,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <string>
 
 
 #include "expander_lib.h"
@@ -25,8 +24,8 @@ int main()
   mcp23017 expander;  /* Verwaltungs-Structure */
   int data = 0x01;    /* Ausgabewert */
   int down = 0;       /* Richtungsangabe */
-
-  expander = init_mcp23017(0x20,0,255,"/dev/i2c-1".c_str());
+  char* bus
+  expander = init_mcp23017(0x20,0,255);
 
   while(1)
     {
@@ -49,7 +48,7 @@ int main()
   return 0;
 }
 
-mcp23017 init_mcp23017(int address, int directionA, int directionB, std::string I2CBus)
+mcp23017 init_mcp23017(int address, int directionA, int directionB/*, char* I2CBus*/)
   {
   int fd;             /* Filehandle */
   mcp23017 expander;  /* Rueckgabedaten */
@@ -58,7 +57,7 @@ mcp23017 init_mcp23017(int address, int directionA, int directionB, std::string 
   expander.address = address;
   expander.directionA = directionA;
   expander.directionB = directionB;
-  expander.I2CBus = I2CBus;
+ // expander.I2CBus = I2CBus;
 
   // Port-Richtung (Eingabe/Ausgabe) setzen
   fd = open_mcp23017(expander);
@@ -106,7 +105,7 @@ void setdir_mcp23017(mcp23017 expander, int richtungsregister, int value)
 int open_mcp23017(mcp23017 expander)
   {
   int fd;
-  if ((fd = open(expander.I2CBus, O_RDWR)) < 0)
+  if ((fd = open("/dev/i2c-1", O_RDWR)) < 0)
     {
     printf("Failed to open the i2c bus\n");
     exit(1);
