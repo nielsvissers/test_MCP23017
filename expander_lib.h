@@ -46,6 +46,7 @@ typedef struct expander mcp23017;
  */
 mcp23017 init_mcp23017(int address, int directionA, int directionB);
 
+static int read_register(int busfd, __uint16_t reg, unsigned char *buf, int bufsize)
 /* Datenrichtung der Ports festlegen
  * richtungsregister: muss "IODIRA" oder "IODIRB" sein!
  * value: Zuordnung der Bits (Input: 1, Output: 0)

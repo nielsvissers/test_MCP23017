@@ -29,14 +29,37 @@ int main()
   while(1)
     {
     /* beide Ports identisch "bedienen" */
-    int returnvalue=read_mcp23017(expander,0x13);
+    
+    int fd;
+    fd = open_mcp23017(fd, 0x13, );
+    
+	unsigned char buf[1] = {0};
+    int returnvalue=read_register(expander,0x13, buf, 1);
     printf("return value: %.2x\n",returnvalue);
     usleep(100000); /* 100 ms Pause */
     }
 
   return 0;
 }
+static int read_register(int busfd, __uint16_t reg, unsigned char *buf, int bufsize)
+{
+	unsigned char reg_buf[2];
+	int ret;
+  
 
+	reg_buf[0] = (reg >> 0) & 0xFF;
+	reg_buf[1] = (reg >> 8) & 0xFF;
+
+	ret = write_bus(busfd, reg_buf, 2);
+	if (ret < 0) {
+		printf("Failed to write [0x%02x 0x%02x] (reg: %04x).\n", reg_buf[0], reg_buf[1], reg);
+		return ret;
+	}
+
+	printf("wrote %d bytes\n", ret);
+	return read_bus(busfd, buf, bufsize);
+
+}
 mcp23017 init_mcp23017(int address, int directionA, int directionB/*, char* I2CBus*/)
   {
   int fd;             /* Filehandle */
