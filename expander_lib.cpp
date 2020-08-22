@@ -57,7 +57,7 @@ int read_register(int busfd, __uint16_t reg, unsigned char *buf, int bufsize)
 	}
 
 	printf("wrote %d bytes\n", ret);
-	return read_bus(busfd, buf, bufsize);
+	return read(busfd, buf, bufsize);
 
 }
 mcp23017 init_mcp23017(int address, int directionA, int directionB/*, char* I2CBus*/)
