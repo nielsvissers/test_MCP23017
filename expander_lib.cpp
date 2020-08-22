@@ -26,7 +26,7 @@ int main()
   int data = 0x01;    /* Ausgabewert */
   int down = 0;       /* Richtungsangabe */
 
-  expander = init_mcp23017(0x20,0,255,"/dev/i2c-1");
+  expander = init_mcp23017(0x20,0,255,"/dev/i2c-1".c_str());
 
   while(1)
     {
