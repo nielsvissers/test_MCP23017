@@ -48,7 +48,7 @@ int main()
   return 0;
 }
 
-mcp23017 init_mcp23017(int address, int directionA, int directionB, char* I2CBus)
+mcp23017 init_mcp23017(int address, int directionA, int directionB, std::string I2CBus)
   {
   int fd;             /* Filehandle */
   mcp23017 expander;  /* Rueckgabedaten */
