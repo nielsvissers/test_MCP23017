@@ -50,7 +50,9 @@ mcp23017 init_mcp23017(int address, int directionA, int directionB/*, char* I2CB
 
   // Port-Richtung (Eingabe/Ausgabe) setzen
   fd = open_mcp23017(expander);
+  printf("set iodira \n");
   setdir_mcp23017(expander, IODIRA, expander.directionA);
+  printf("set iodirb \n");
   setdir_mcp23017(expander, IODIRB, expander.directionB);
   close(fd);
   return expander;
@@ -123,6 +125,7 @@ void write_mcp23017(mcp23017 expander, int reg, int value)
   if(write(fd,buffer, 1) < 0)
     {
     printf("Failed to write to the i2c bus\n");
+    printf("%d / %d \n", reg value);
     exit(1);
     }
   close(fd);
